@@ -25,9 +25,9 @@ def average_odd_even(numbers: List[int]):
 
 # Fungsi untuk menghitung simpangan baku (standard deviation)
 def standard_deviation(numbers: List[int]):
-    mean = sum(numbers) / len(numbers) if numbers else 0
-    variance = sum((x - mean) ** 2 for x in numbers) / len(numbers) if numbers else 0
-    return math.sqrt(variance)
+    mean = sum(numbers) / len(numbers) if numbers else 0 #cari rata rata
+    variance = sum((x - mean) ** 2 for x in numbers) / len(numbers) if numbers else 0 #cari variansi
+    return math.sqrt(variance) #cari akar dari variansi
 
 # Fungsi untuk menghitung simpangan baku ganjil dan genap
 def standard_deviation_odd_even(numbers: List[int]):

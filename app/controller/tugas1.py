@@ -54,11 +54,13 @@ def sort_numbers(request: NumbersRequest):  # Gunakan model Pydantic untuk reque
     sorted_data = sort_odd_even(request.numbers)  # Mengakses 'numbers' dari body
     averages = average_odd_even(request.numbers)  # Menghitung rata-rata ganjil dan genap
     std_devs = standard_deviation_odd_even(request.numbers)  # Menghitung simpangan baku ganjil dan genap
+    total_std_devs = standard_deviation(request.numbers)  # Menghitung simpangan baku total
     averages_based_on_std = average_based_on_std(request.numbers)  # Menghitung rata-rata berdasarkan simpangan baku
     return {
         "data": sorted_data,
         "rata-rata": averages,
         "simpangan_baku": std_devs,
+        "simpangan_baku_total": total_std_devs,
         "rata-rata_simpangan_baku": averages_based_on_std
 
     }

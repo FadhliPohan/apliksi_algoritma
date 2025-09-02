@@ -47,6 +47,14 @@ def average_based_on_std(numbers: List[int]):
     rata_rata = (std_ganjil + std_genap)/2
     return {"standar_deviasi_genap_ganjil": rata_rata}
 
+# fungsi rata rata total per simpang baku
+def average_per_std(numbers: List[int]):
+    semua = [num for num in numbers ]  # semua angka
+    rata_rata=sum(semua)/len(semua)
+    std = standard_deviation(semua)  # Menghitung simpangan baku total
+    hasil = rata_rata/std
+    return {"rata_rata_per_simpangan_baku": hasil}
+
 
 # Endpoint untuk menerima array angka dan mengurutkan ganjil-genap serta menghitung rata-rata dan simpangan baku
 @router.post("/sort")
@@ -55,12 +63,12 @@ def sort_numbers(request: NumbersRequest):  # Gunakan model Pydantic untuk reque
     averages = average_odd_even(request.numbers)  # Menghitung rata-rata ganjil dan genap
     std_devs = standard_deviation_odd_even(request.numbers)  # Menghitung simpangan baku ganjil dan genap
     total_std_devs = standard_deviation(request.numbers)  # Menghitung simpangan baku total
-    averages_based_on_std = average_based_on_std(request.numbers)  # Menghitung rata-rata berdasarkan simpangan baku
+    average_per_std_result = average_per_std(request.numbers)  # Menghitung rata-rata berdasarkan simpangan baku
     return {
         "data": sorted_data,
         "rata-rata": averages,
         "simpangan_baku": std_devs,
         "simpangan_baku_total": total_std_devs,
-        "rata-rata_simpangan_baku": averages_based_on_std
+        "rata-rata_per_simpangan_baku": average_per_std_result
 
     }

@@ -53,7 +53,7 @@ def average_per_std(numbers: List[int]):
     rata_rata=sum(semua)/len(semua)
     std = standard_deviation(semua)  # Menghitung simpangan baku total
     hasil = rata_rata/std
-    return {"rata_rata_per_simpangan_baku": hasil}
+    return {"rata_rata":rata_rata,"std":std,"rata_rata_per_simpangan_baku": hasil}
 
 
 # Endpoint untuk menerima array angka dan mengurutkan ganjil-genap serta menghitung rata-rata dan simpangan baku
